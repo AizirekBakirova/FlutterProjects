@@ -61,7 +61,7 @@ class _MyPageState extends State<MyPage> {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 5,
             ),
             const Text(
               "Flutter Developer",
@@ -71,6 +71,13 @@ class _MyPageState extends State<MyPage> {
                 fontSize: 28,
                 fontWeight: FontWeight.w400,
               ),
+            ),
+            const Divider(
+              color: Colors.white,
+              indent: 20,
+              endIndent: 20,
+              height: 0,
+              thickness: 2,
             ),
             const SizedBox(
               height: 20,
@@ -189,10 +196,10 @@ class SecondPage extends StatelessWidget {
           backgroundImage: AssetImage('assets/image/girl.avif'),
         ),
         Text(
-          'Hello! Glad to see you in my App. My name is Aizirek, and I`m a flutter developer. If you have any qustions, please feel free to contact with me. You can find my number and email in first page. Have a good day.',
+          'Hello! Glad to see you in my App. My name is Aizirek, and I`m a flutter developer. If you have any questions, please feel free to contact with me. You can find my number and email in first page. Have a good day.',
           style: TextStyle(
               color: Color.fromARGB(255, 76, 96, 211),
-              fontFamily: 'Pacifico-Regular',
+              fontFamily: 'YoungSerif-Regular',
               fontSize: 35,
               fontWeight: FontWeight.w200),
         )
