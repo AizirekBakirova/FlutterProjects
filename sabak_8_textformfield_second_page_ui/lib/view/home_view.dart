@@ -21,9 +21,19 @@ class _HomeViewState extends State<HomeView> {
               children: [
                 Row(
                   children: [
-                    Image.asset(
-                      'assets/Design circle.png',
-                      width: 130,
+                    Stack(
+                      alignment: Alignment.topLeft,
+                      children: [
+                        Image.asset(
+                          'assets/Design circle.png',
+                          width: 130,
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: const Icon(Icons.arrow_back_ios_new))
+                      ],
                     ),
                   ],
                 ),
@@ -49,14 +59,14 @@ class _HomeViewState extends State<HomeView> {
             ),
           ),
           const SizedBox(
-            height: 40,
+            height: 30,
           ),
           Image.network(
             'https://freepngimg.com/save/10661-clock-transparent/451x451',
-            width: 150,
+            width: 100,
           ),
           const SizedBox(
-            height: 50,
+            height: 30,
           ),
           Padding(
             padding: const EdgeInsetsDirectional.symmetric(horizontal: 18),
@@ -72,6 +82,113 @@ class _HomeViewState extends State<HomeView> {
                       offset: Offset(4, 4),
                       blurRadius: 10)
                 ],
+              ),
+              child: const Padding(
+                padding:
+                    EdgeInsets.only(left: 4, top: 35, right: 52, bottom: 40),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.check_box,
+                          size: 40,
+                        ),
+                        SizedBox(width: 7),
+                        Text(
+                          'Grocery Shoping',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w700),
+                        ),
+                        SizedBox(width: 30),
+                        Icon(Icons.border_color,
+                            size: 40, color: Color(0xff4ebdaf)),
+                        SizedBox(width: 10),
+                        Icon(Icons.delete, size: 40, color: Color(0xff4ebdaf))
+                      ],
+                    ),
+                    SizedBox(height: 8.04),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.check_box,
+                          size: 40,
+                        ),
+                        SizedBox(width: 7),
+                        Text(
+                          'Website Hosting',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w700),
+                        ),
+                        SizedBox(width: 30),
+                        Icon(Icons.border_color,
+                            size: 40, color: Color(0xff4ebdaf)),
+                        SizedBox(width: 10),
+                        Icon(Icons.delete, size: 40, color: Color(0xff4ebdaf))
+                      ],
+                    ),
+                    SizedBox(height: 8.04),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.check_box_outline_blank,
+                          size: 40,
+                        ),
+                        SizedBox(width: 7),
+                        Text(
+                          'UX Designing',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w700),
+                        ),
+                        SizedBox(width: 51),
+                        Icon(Icons.border_color,
+                            size: 40, color: Color(0xff4ebdaf)),
+                        SizedBox(width: 10),
+                        Icon(Icons.delete, size: 40, color: Color(0xff4ebdaf))
+                      ],
+                    ),
+                    SizedBox(height: 8.04),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.check_box,
+                          size: 40,
+                        ),
+                        SizedBox(width: 7),
+                        Text(
+                          'Haircut',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w700),
+                        ),
+                        SizedBox(width: 93),
+                        Icon(Icons.border_color,
+                            size: 40, color: Color(0xff4ebdaf)),
+                        SizedBox(width: 10),
+                        Icon(Icons.delete, size: 40, color: Color(0xff4ebdaf))
+                      ],
+                    ),
+                    SizedBox(height: 8.04),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.check_box_outline_blank,
+                          size: 40,
+                        ),
+                        SizedBox(width: 7),
+                        Text(
+                          'Guitar Sesion',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w700),
+                        ),
+                        SizedBox(width: 50),
+                        Icon(Icons.border_color,
+                            size: 40, color: Color(0xff4ebdaf)),
+                        SizedBox(width: 10),
+                        Icon(Icons.delete, size: 40, color: Color(0xff4ebdaf))
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -9,11 +9,19 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  String email = 'aizirek@gmail.com';
+  String password = '123aizirek';
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffe6e6e6),
-      body: Center(
+      body: Form(
+        key: formKey,
         child: Column(
           children: [
             Row(
@@ -44,11 +52,22 @@ class _LoginViewState extends State<LoginView> {
               child: Material(
                 elevation: 15,
                 child: TextFormField(
-                  decoration: const InputDecoration(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your email';
+                    } else if (value != email) {
+                      return 'Email is not correct';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
-                      border: OutlineInputBorder(borderSide: BorderSide.none),
-                      hintText: 'Enter Your Email'),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5)),
+                      // border: OutlineInputBorder(borderSide: BorderSide.none),
+                      hintText: 'Enter Your Email',
+                      labelText: 'User name'),
                 ),
               ),
             ),
@@ -60,11 +79,24 @@ class _LoginViewState extends State<LoginView> {
               child: Material(
                 elevation: 15,
                 child: TextFormField(
-                  decoration: const InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(borderSide: BorderSide.none),
-                      hintText: 'Enter Your Password'),
+                  obscureText: true,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your password';
+                    } else if (value != password) {
+                      return 'Password is not correct';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5)),
+                    // border: OutlineInputBorder(borderSide: BorderSide.none),
+                    hintText: 'Enter Your Password',
+                    labelText: 'Password',
+                  ),
                 ),
               ),
             ),
@@ -83,12 +115,15 @@ class _LoginViewState extends State<LoginView> {
                   shape: const BeveledRectangleBorder(
                       borderRadius: BorderRadius.zero)),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomeView(),
-                  ),
-                );
+                if (formKey.currentState!.validate()) {
+                  formKey.currentState!.save();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomeView(),
+                    ),
+                  );
+                }
               },
               child: const Text(
                 'Sign in',
