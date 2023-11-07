@@ -55,12 +55,6 @@ class _HomeViewState extends State<HomeView> {
 
   void result() {
     if (sum1 >= 50) {
-      ConfettiWidget(
-        confettiController: _controller,
-        blastDirection: pi / 2,
-        gravity: 0.01,
-        emissionFrequency: 0.1,
-      );
       showDialog(
           context: context,
           builder: (context) {
@@ -89,6 +83,7 @@ class _HomeViewState extends State<HomeView> {
                       }
                       isPlaying = !isPlaying;
                     },
+                    // ignore: sort_child_properties_last
                     child: const Text(
                       'Congratulations!',
                       style:
@@ -104,7 +99,7 @@ class _HomeViewState extends State<HomeView> {
                       Navigator.pop(context);
                       setState(() {});
                     },
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Restart game',
                         style: TextStyle(color: Colors.black, fontSize: 15),
@@ -119,8 +114,8 @@ class _HomeViewState extends State<HomeView> {
           builder: (context) {
             return AlertDialog(
               backgroundColor: Colors.greenAccent,
-              title: Center(child: Text('Tim you won!')),
-              titleTextStyle: TextStyle(
+              title: const Center(child: Text('Tim you won!')),
+              titleTextStyle: const TextStyle(
                   color: Colors.black,
                   fontSize: 30,
                   fontWeight: FontWeight.bold),
@@ -142,7 +137,8 @@ class _HomeViewState extends State<HomeView> {
                       }
                       isPlaying = !isPlaying;
                     },
-                    child: Text(
+                    // ignore: sort_child_properties_last
+                    child: const Text(
                       'Congratulations!',
                       style:
                           TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
@@ -157,7 +153,7 @@ class _HomeViewState extends State<HomeView> {
                       Navigator.pop(context);
                       setState(() {});
                     },
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Restart game',
                         style: TextStyle(color: Colors.black, fontSize: 15),
@@ -190,32 +186,16 @@ class _HomeViewState extends State<HomeView> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // SizedBox(height: 20),
-          // MaterialButton(
-          //   onPressed: () {
-          //     if (isPlaying) {
-          //       _controller.stop();
-          //     } else {
-          //       _controller.play();
-          //     }
-          //     isPlaying = !isPlaying;
-          //   },
-          //   child: Text(
-          //     'Congratulations!',
-          //     style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-          //   ),
-          //   color: Colors.greenAccent,
-          // ),
           ConfettiWidget(
             confettiController: _controller,
             blastDirection: pi / 2,
             gravity: 0.01,
             emissionFrequency: 0.1,
           ),
-          SizedBox(height: 50),
-          Text(
+          const SizedBox(height: 50),
+          const Text(
             "Sam`s score: ",
-            style: const TextStyle(
+            style: TextStyle(
                 color: Colors.red, fontSize: 30, fontWeight: FontWeight.bold),
           ),
           const SizedBox(
@@ -287,10 +267,10 @@ class _HomeViewState extends State<HomeView> {
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                   color: Colors.red)),
-          SizedBox(height: 15),
-          Text(
+          const SizedBox(height: 15),
+          const Text(
             " Tim`s score:",
-            style: const TextStyle(
+            style: TextStyle(
                 color: Colors.red, fontSize: 30, fontWeight: FontWeight.bold),
           ),
         ],
