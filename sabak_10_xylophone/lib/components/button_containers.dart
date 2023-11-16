@@ -12,7 +12,7 @@ class ButtonContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: baskych,
       child: Container(
         color: color,
