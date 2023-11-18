@@ -1,3 +1,4 @@
+// klass shablon
 class Kyrgyzstan {
   Kyrgyzstan(
       {required this.capital,
@@ -13,7 +14,7 @@ class Kyrgyzstan {
   final String attribute;
 }
 
-//object
+//object (klasstyn ob`ektisi)
 final country = Kyrgyzstan(
     capital: 'Bishkek',
     region: 7,
