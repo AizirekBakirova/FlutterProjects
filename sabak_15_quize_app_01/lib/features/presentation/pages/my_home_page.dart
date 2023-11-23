@@ -13,7 +13,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: const Color(0xff343434),
       appBar: myAppBar(),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -86,7 +86,7 @@ class CustomButton extends StatelessWidget {
           onPressed: () {},
           child: Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.white, fontSize: 32, fontWeight: FontWeight.w500),
           )),
     );
