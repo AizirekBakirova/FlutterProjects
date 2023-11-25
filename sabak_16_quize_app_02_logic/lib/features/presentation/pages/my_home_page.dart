@@ -1,6 +1,10 @@
+import 'dart:math';
+
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:sabak_16_quize_app_02_logic/features/domain/quize_brain.dart';
 import 'package:sabak_16_quize_app_02_logic/features/presentation/custom_button/custom_button.dart';
+import 'package:quickalert/quickalert.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -12,6 +16,30 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int index = 0;
   List<bool> jooptop = [];
+  List<Icon> scoreIcon = [];
+
+  void showAlert() {
+    QuickAlert.show(
+        confirmBtnTextStyle: TextStyle(
+            fontFamily: 'BebasNeue-Regular',
+            fontSize: 25,
+            color: Colors.yellowAccent),
+        context: context,
+        title: 'Well Done!',
+        text: 'Correct anwers: 5',
+        confirmBtnText: 'Reset',
+        onConfirmBtnTap: () {
+          reset();
+          Navigator.pop(context);
+          setState(() {});
+        },
+        type: QuickAlertType.success);
+  }
+
+  void reset() {
+    index = 0;
+    jooptop.clear();
+  }
 
   void incrementIndex(bool joop) {
     if (jooptop.length < 10) {
@@ -21,7 +49,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
     if (index < 9) {
       index++;
+    } else {
+      return showAlert();
     }
+
     setState(() {});
   }
 
@@ -79,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 50),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -99,18 +130,18 @@ class _MyHomePageState extends State<MyHomePage> {
                               ))
                         .toList(),
                   ),
-                  IconButton(
-                    onPressed: () {
-                      index = 0;
-                      jooptop.clear();
-                      setState(() {});
-                    },
-                    icon: const Icon(
-                      Icons.refresh,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                  ),
+                  // IconButton(
+                  //   onPressed: () {
+                  //     index = 0;
+                  //     jooptop.clear();
+                  //     setState(() {});
+                  //   },
+                  //   icon: const Icon(
+                  //     Icons.refresh,
+                  //     color: Colors.white,
+                  //     size: 30,
+                  //   ),
+                  // ),
                 ],
               ),
             ],

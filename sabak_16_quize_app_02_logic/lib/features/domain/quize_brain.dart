@@ -7,25 +7,28 @@ class QuizBrain {
 QuizBrain q1 =
     QuizBrain(suroo: 'Butterflies taste things with their wings.', joop: false);
 // False - butterflies taste with their feet.
-QuizBrain q2 =
-    QuizBrain(suroo: 'Golf balls have 300 to 500 dimples.', joop: true);
-// True – all golf balls don’t have the same number of dimples.
-QuizBrain q3 = QuizBrain(
-    suroo: 'Lightning can’t strike in the same place twice.', joop: false);
-//  False - lightning can actually strike in the same place more than one time.
-QuizBrain q4 = QuizBrain(
+QuizBrain q2 = QuizBrain(
     suroo: 'John Glenn was the oldest astronaut to travel in space.',
     joop: true);
 // True – he was 77 years old.
-QuizBrain q5 = QuizBrain(
+QuizBrain q3 = QuizBrain(
     suroo: ' The Statue of Liberty is the world’s tallest monument.',
     joop: false);
 // False – The State of Unity is the world’s tallest monument.
-QuizBrain q6 = QuizBrain(
+QuizBrain q4 = QuizBrain(
+    suroo: 'Lightning can’t strike in the same place twice.', joop: false);
+//  False - lightning can actually strike in the same place more than one time.
+
+QuizBrain q5 =
+    QuizBrain(suroo: 'Golf balls have 300 to 500 dimples.', joop: true);
+// True – all golf balls don’t have the same number of dimples.
+QuizBrain q6 = QuizBrain(suroo: 'The sun is not a star.', joop: false);
+// False - the sun is actually star.
+
+QuizBrain q7 = QuizBrain(
     suroo: 'Ants can hold up to 5,000 times their body weight.', joop: true);
 // True - they may be small, but they can hold a lot.
-QuizBrain q7 = QuizBrain(suroo: 'The sun is not a star.', joop: false);
-// False - the sun is actually star.
+
 QuizBrain q8 = QuizBrain(
     suroo: 'The blue whale is the biggest animal to have ever lived.',
     joop: true);
