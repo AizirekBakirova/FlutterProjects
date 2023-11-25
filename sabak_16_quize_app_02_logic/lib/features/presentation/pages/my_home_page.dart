@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sabak_16_quize_app_02_logic/features/domain/quize_brain.dart';
+import 'package:sabak_16_quize_app_02_logic/features/presentation/custom_button/custom_button.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -27,68 +28,93 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff343434),
+      extendBodyBehindAppBar: true,
+      backgroundColor: Color(0xffd1437c),
       appBar: myAppBar(),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              quizeList[index].suroo,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 32,
-                fontWeight: FontWeight.w500,
+        child: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [
+            Color(0xff01ebd),
+            Color(0xff873bcc),
+            Color(0xfffe4a97),
+            // Color(0xffe17763),
+            // Color(0xff68998c)
+          ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  quizeList[index].suroo,
+                  style: const TextStyle(
+                      color: Color.fromARGB(255, 229, 225, 225),
+                      fontSize: 32,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'BebasNeue-Regular'),
+                  textAlign: TextAlign.center,
+                ),
               ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 90),
-            CustomButton(
-              backgroundColor: const Color(0xff4CB050),
-              text: 'Туура',
-              onPressed: () {
-                incrementIndex(true);
-              },
-            ),
-            CustomButton(
-              backgroundColor: const Color(0xffEF443A),
-              text: 'Туура эмес',
-              onPressed: () {
-                incrementIndex(false);
-              },
-            ),
-            const SizedBox(height: 80),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: jooptop
-                      .map((e) => e
-                          ? const Icon(
-                              Icons.done,
-                              color: Colors.green,
-                            )
-                          : const Icon(
-                              Icons.close,
-                              color: Colors.red,
-                            ))
-                      .toList(),
-                ),
-                IconButton(
-                  onPressed: () {
-                    index = 0;
-                    jooptop.clear();
-                    setState(() {});
-                  },
-                  icon: const Icon(
-                    Icons.refresh,
-                    color: Colors.white,
-                    size: 30,
+              const SizedBox(height: 90),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomButton(
+                    backgroundColor: const Color(0xff33691e),
+                    text: 'True',
+                    onPressed: () {
+                      incrementIndex(true);
+                    },
                   ),
-                ),
-              ],
-            ),
-          ],
+                  SizedBox(
+                    width: 20,
+                  ),
+                  CustomButton(
+                    backgroundColor: const Color(0xff880E4f),
+                    text: 'False',
+                    onPressed: () {
+                      incrementIndex(false);
+                    },
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: jooptop
+                        .map((e) => e
+                            ? const Icon(
+                                Icons.done,
+                                color: Color(0xff33691e),
+                                size: 30,
+                              )
+                            : const Icon(
+                                Icons.close,
+                                color: Color(0xff880E4f),
+                                size: 30,
+                              ))
+                        .toList(),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      index = 0;
+                      jooptop.clear();
+                      setState(() {});
+                    },
+                    icon: const Icon(
+                      Icons.refresh,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -96,38 +122,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   AppBar myAppBar() {
     return AppBar(
-      title: const Text('Tapshyrma 7'),
-    );
-  }
-}
-
-class CustomButton extends StatelessWidget {
-  const CustomButton({
-    super.key,
-    required this.backgroundColor,
-    required this.text,
-    this.onPressed,
-  });
-  final Color backgroundColor;
-  final String text;
-  final void Function()? onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
-      child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              backgroundColor: backgroundColor,
-              minimumSize: const Size(335, 70),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6))),
-          onPressed: onPressed,
-          child: Text(
-            text,
-            style: const TextStyle(
-                color: Colors.white, fontSize: 32, fontWeight: FontWeight.w500),
-          )),
+      backgroundColor: Colors.transparent,
+      title: const Text(
+        'Quiz App',
+        style: TextStyle(fontFamily: 'BebasNeue-Regular', fontSize: 25),
+      ),
     );
   }
 }
