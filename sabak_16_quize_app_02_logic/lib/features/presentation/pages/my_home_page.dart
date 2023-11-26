@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:sabak_16_quize_app_02_logic/features/domain/quize_brain.dart';
 import 'package:sabak_16_quize_app_02_logic/features/presentation/custom_button/custom_button.dart';
@@ -16,18 +13,19 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int index = 0;
   List<bool> jooptop = [];
-  List<Icon> scoreIcon = [];
+
+  int score = 0;
 
   void showAlert() {
     QuickAlert.show(
-        confirmBtnTextStyle: TextStyle(
+        confirmBtnTextStyle: const TextStyle(
             fontFamily: 'BebasNeue-Regular',
             fontSize: 25,
             color: Colors.yellowAccent),
         context: context,
-        title: 'Well Done!',
-        text: 'Correct anwers: 5',
-        confirmBtnText: 'Reset',
+        title: 'Finish!',
+        text: 'You`ve got $score from ${jooptop.length}',
+        confirmBtnText: 'Okay',
         onConfirmBtnTap: () {
           reset();
           Navigator.pop(context);
@@ -46,13 +44,11 @@ class _MyHomePageState extends State<MyHomePage> {
       final result = quizeList[index].joop;
       jooptop.add(result);
     }
-
     if (index < 9) {
       index++;
     } else {
       return showAlert();
     }
-
     setState(() {});
   }
 
@@ -60,17 +56,15 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: Color(0xffd1437c),
+      backgroundColor: const Color(0xffd1437c),
       appBar: myAppBar(),
       body: Center(
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(colors: [
             Color(0xff01ebd),
             Color(0xff873bcc),
             Color(0xfffe4a97),
-            // Color(0xffe17763),
-            // Color(0xff68998c)
           ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -98,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       incrementIndex(true);
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   CustomButton(
