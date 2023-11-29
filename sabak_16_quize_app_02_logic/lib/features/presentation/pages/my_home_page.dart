@@ -13,19 +13,30 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int index = 0;
   List<bool> jooptop = [];
+  int tuuraJoop = 0;
+  int kataJoop = 0;
 
-  int score = 0;
+  // void tuuraKata() {
+  //   if (quizeList[index].joop == true) {
+  //     tuuraJoop++;
+  //   } else {
+  //     kataJoop++;
+  //     setState(() {});
+  //   }
+  // }
 
   void showAlert() {
     QuickAlert.show(
         confirmBtnTextStyle: const TextStyle(
             fontFamily: 'BebasNeue-Regular',
-            fontSize: 25,
+            fontSize: 20,
             color: Colors.yellowAccent),
         context: context,
-        title: 'Finish!',
-        text: 'You`ve got $score from ${jooptop.length}',
-        confirmBtnText: 'Okay',
+        title: 'Аяктады!',
+        text:
+            'Туура: ${jooptop.map((e) => e ? tuuraJoop : kataJoop)} Ката: $kataJoop дон  упай алдыныз!',
+        // text: 'You`ve got $score from ${jooptop.length}',
+        confirmBtnText: 'Чыгуу',
         onConfirmBtnTap: () {
           reset();
           Navigator.pop(context);
@@ -46,6 +57,8 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     if (index < 9) {
       index++;
+      tuuraJoop++;
+      kataJoop++;
     } else {
       return showAlert();
     }
