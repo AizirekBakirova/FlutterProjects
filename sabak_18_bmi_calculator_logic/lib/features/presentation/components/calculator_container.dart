@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sabak_17_bmi_calculator/features/presentation/constants/app_colors.dart';
-import 'package:sabak_17_bmi_calculator/features/presentation/constants/app_text_styles.dart';
+import 'package:sabak_18_bmi_calculator_logic/features/presentation/constants/app_colors.dart';
+import 'package:sabak_18_bmi_calculator_logic/features/presentation/constants/app_text_styles.dart';
 
 class CalculatorContainer extends StatelessWidget {
   const CalculatorContainer({

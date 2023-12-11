@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sabak_17_bmi_calculator/features/presentation/components/bmi_calculator.dart';
+import 'package:sabak_17_bmi_calculator/features/presentation/components/bmi_container.dart';
 import 'package:sabak_17_bmi_calculator/features/presentation/components/calculator_container.dart';
-import 'package:sabak_17_bmi_calculator/features/presentation/pages/constants/app_colors.dart';
-import 'package:sabak_17_bmi_calculator/features/presentation/pages/constants/app_sized_box.dart';
-import 'package:sabak_17_bmi_calculator/features/presentation/pages/constants/app_text_styles.dart';
+import 'package:sabak_17_bmi_calculator/features/presentation/constants/app_colors.dart';
+import 'package:sabak_17_bmi_calculator/features/presentation/constants/app_sized_box.dart';
+import 'package:sabak_17_bmi_calculator/features/presentation/constants/app_text_styles.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -17,25 +17,36 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.scaffoldBgc,
-      appBar: myAppBar(),
-      body: const Padding(
+      appBar: appBar(),
+      body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 21, vertical: 39),
         child: Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                BmiContainer(),
-                BmiContainer(),
+                BmiContainer(
+                  icon: Icons.male,
+                  text: 'MALE',
+                ),
+                BmiContainer(
+                  icon: Icons.female,
+                  text: 'FEMALE',
+                ),
               ],
             ),
             AppSize.h18,
-            BmiContainer(),
+            BmiContainer(
+              wsize: double.infinity,
+            ),
             AppSize.h18,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                BmiContainer(),
+                BmiContainer(
+                  text: 'WEIGHT',
+                  smText: 60.toString(),
+                ),
                 BmiContainer(),
               ],
             ),
@@ -46,9 +57,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  AppBar myAppBar() {
+  AppBar appBar() {
     return AppBar(
-      backgroundColor: AppColors.appBgc,
+      backgroundColor: AppColors.appBarBgc,
       centerTitle: true,
       title: const Text(
         'BMI CALCULATOR',

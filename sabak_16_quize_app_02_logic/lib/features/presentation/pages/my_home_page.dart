@@ -13,36 +13,32 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int index = 0;
   List<bool> jooptop = [];
-  int tuuraJoop = 0;
-  int kataJoop = 0;
-
-  // void tuuraKata() {
-  //   if (quizeList[index].joop == true) {
-  //     tuuraJoop++;
-  //   } else {
-  //     kataJoop++;
-  //     setState(() {});
-  //   }
-  // }
+  // int tuuraJoop = 0;
+  // int kataJoop = 0;
+  List tuuraJoop = <bool>[];
+  List kataJoop = <bool>[];
 
   void showAlert() {
-    QuickAlert.show(
-        confirmBtnTextStyle: const TextStyle(
-            fontFamily: 'BebasNeue-Regular',
-            fontSize: 20,
-            color: Colors.yellowAccent),
-        context: context,
-        title: 'Аяктады!',
-        text:
-            'Туура: ${jooptop.map((e) => e ? tuuraJoop : kataJoop)} Ката: $kataJoop дон  упай алдыныз!',
-        // text: 'You`ve got $score from ${jooptop.length}',
-        confirmBtnText: 'Чыгуу',
-        onConfirmBtnTap: () {
-          reset();
-          Navigator.pop(context);
-          setState(() {});
-        },
-        type: QuickAlertType.success);
+    if (quizeList[index] == quizeList.last) {
+      QuickAlert.show(
+          confirmBtnTextStyle: const TextStyle(
+              fontFamily: 'BebasNeue-Regular',
+              fontSize: 20,
+              color: Colors.yellowAccent),
+          context: context,
+          title: 'Аяктады!',
+          text: 'Туура жооптор: ${tuuraJoop} Ката жооптор: ${kataJoop}',
+          // text: 'You`ve got $score from ${jooptop.length}',
+          confirmBtnText: 'Чыгуу',
+          onConfirmBtnTap: () {
+            reset();
+            Navigator.pop(context);
+            setState(() {});
+          },
+          type: QuickAlertType.success);
+    } else {
+      index++;
+    }
   }
 
   void reset() {
@@ -50,19 +46,44 @@ class _MyHomePageState extends State<MyHomePage> {
     jooptop.clear();
   }
 
-  void incrementIndex(bool joop) {
-    if (jooptop.length < 10) {
-      final result = quizeList[index].joop;
-      jooptop.add(result);
-    }
-    if (index < 9) {
-      index++;
-      tuuraJoop++;
-      kataJoop++;
+  // void incrementIndex(bool joop) {
+  //   if (jooptop.length < 10) {
+  //     final result = quizeList[index].joop;
+  //     jooptop.add(result);
+  //   }
+  //   if (index < 9) {
+  //     index++;
+  //     tuuraJoop++;
+  //     lastQuestion();
+  //   } else {
+  //     kataJoop++;
+  //     lastQuestion();
+  //   }
+  //   setState(() {
+  //     return showAlert();
+  //   });
+  // }
+
+  void incrementIndex(bool value) {
+    if (quizeList[index].joop == value) {
+      jooptop.add(true);
+      tuuraJoop.add(true);
     } else {
-      return showAlert();
+      jooptop.add(false);
+      kataJoop.add(false);
     }
-    setState(() {});
+
+    setState(() {
+      return showAlert();
+    });
+  }
+
+  void lastQuestion() {
+    if (index == quizeList.length) {
+      setState(() {
+        index == 0;
+      });
+    }
   }
 
   @override
