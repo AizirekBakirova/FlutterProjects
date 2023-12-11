@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:sabak_18_bmi_calculator_logic/features/presentation/constants/app_text_styles.dart';
 
-class WeightAgeCard extends StatelessWidget {
-  const WeightAgeCard(
+class AgeCard extends StatelessWidget {
+  const AgeCard(
       {super.key,
       required this.text,
       required this.san,
       required this.add,
       required this.remove,
       required this.decrement,
-      required this.increment});
+      required this.increment,
+      required this.ageCount});
   final String text;
   final int san;
   final IconData add;
   final IconData remove;
   final void Function() decrement;
   final void Function() increment;
+
+  final bool ageCount;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,14 +44,16 @@ class WeightAgeCard extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: decrement,
-                icon: Icon(remove, size: 45, color: Colors.grey),
+                icon: Icon(remove,
+                    size: 45,
+                    color: ageCount ? Colors.grey : Color(0xffff0f65)),
               ),
               IconButton(
                   onPressed: increment,
                   icon: Icon(
                     add,
                     size: 45,
-                    color: Colors.grey,
+                    color: ageCount ? Color(0xffff0f65) : Colors.grey,
                   ))
             ],
           )

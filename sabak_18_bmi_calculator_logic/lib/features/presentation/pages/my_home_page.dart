@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sabak_18_bmi_calculator_logic/features/presentation/components/age_card.dart';
 import 'package:sabak_18_bmi_calculator_logic/features/presentation/components/height_card.dart';
 import 'package:sabak_18_bmi_calculator_logic/features/presentation/components/male_female_card.dart';
 import 'package:sabak_18_bmi_calculator_logic/features/presentation/components/calculator_container.dart';
-import 'package:sabak_18_bmi_calculator_logic/features/presentation/components/weight_age_card.dart';
+
+import 'package:sabak_18_bmi_calculator_logic/features/presentation/components/weight_card.dart';
 import 'package:sabak_18_bmi_calculator_logic/features/presentation/constants/app_colors.dart';
 import 'package:sabak_18_bmi_calculator_logic/features/presentation/constants/app_sized_box.dart';
 import 'package:sabak_18_bmi_calculator_logic/features/presentation/constants/app_text_styles.dart';
@@ -19,6 +21,8 @@ class _MyHomePageState extends State<MyHomePage> {
   bool maleFemale = false;
   int weight = 60;
   int age = 28;
+  bool weightCount = false;
+  bool ageCount = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,15 +85,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   decrement: () {
                     setState(() {
                       weight--;
+                      weightCount = false;
                     });
                   },
                   increment: () {
                     setState(() {
                       weight++;
+                      weightCount = true;
                     });
                   },
+                  weightCount: weightCount,
                 ),
-                WeightAgeCard(
+                AgeCard(
                   text: 'AGE',
                   san: age,
                   remove: Icons.remove_circle,
@@ -97,13 +104,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   decrement: () {
                     setState(() {
                       age--;
+                      ageCount = false;
                     });
                   },
                   increment: () {
                     setState(() {
                       age++;
+                      ageCount = true;
                     });
                   },
+                  ageCount: ageCount,
                 ),
               ],
             ),

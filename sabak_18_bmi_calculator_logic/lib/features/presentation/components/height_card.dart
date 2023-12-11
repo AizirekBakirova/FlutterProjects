@@ -58,6 +58,7 @@ class HeightCard extends StatelessWidget {
               max: 200.0,
               value: height.toDouble(),
               onChanged: onChanged,
+              activeColor: Color(0xffff0f65),
             ),
           )
         ],
