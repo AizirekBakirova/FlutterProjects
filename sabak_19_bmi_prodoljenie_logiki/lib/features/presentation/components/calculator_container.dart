@@ -19,7 +19,7 @@ class CalculatorContainer extends StatelessWidget {
         color: AppColors.buttonContainerColor,
         child: Center(
           child: Text(
-            'Calculator'.toUpperCase(),
+            'Calculate'.toUpperCase(),
             style: AppTextStyles.bmiTextStyle,
           ),
         ),
