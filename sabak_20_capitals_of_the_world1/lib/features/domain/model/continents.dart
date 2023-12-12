@@ -7,7 +7,7 @@ class Continents {
 Continents europe = const Continents(
     continentName: 'Europe', continetImage: 'assets/continents/europe.png');
 Continents asia = const Continents(
-    continentName: 'Asia', continetImage: 'assets/continents/asia.png');
+    continentName: 'Asia', continetImage: 'assets/continents/asia.webp');
 Continents nAmerica = const Continents(
     continentName: 'North America',
     continetImage: 'assets/continents/namerica.png');

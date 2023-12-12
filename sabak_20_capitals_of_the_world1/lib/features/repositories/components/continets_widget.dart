@@ -10,7 +10,8 @@ class ContinentsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, mainAxisSpacing: 8.0, crossAxisSpacing: 8.0),
+        crossAxisCount: 2,
+      ),
       itemCount: continentsList.length,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
@@ -18,7 +19,7 @@ class ContinentsWidget extends StatelessWidget {
           child: Container(
             height: 175,
             width: 130,
-            color: Colors.black,
+            color: Color.fromARGB(255, 253, 251, 251),
             child: Column(
               children: [
                 Text(
@@ -26,7 +27,8 @@ class ContinentsWidget extends StatelessWidget {
                 ),
                 Image.asset(
                   continentsList[index].continetImage,
-                  fit: BoxFit.fitWidth,
+                  width: 200,
+                  height: 175,
                 ),
               ],
             ),
