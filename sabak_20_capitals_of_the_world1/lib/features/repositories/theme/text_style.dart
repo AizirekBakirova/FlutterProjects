@@ -6,5 +6,5 @@ class AppTextStyle {
       color: AppColors.black,
       fontSize: 14,
       fontWeight: FontWeight.w700,
-      fontFamily: 'assets/fonts/Besley-Regular.ttf');
+      fontFamily: 'Urbanist');
 }
