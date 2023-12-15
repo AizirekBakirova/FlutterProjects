@@ -10,6 +10,14 @@ class DetailPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Detail Page'),
       ),
+      body: Column(
+        children: [
+          Image.asset(
+            image,
+            width: 160,
+          )
+        ],
+      ),
     );
   }
 }
