@@ -12,11 +12,23 @@ class DetailPage extends StatelessWidget {
       appBar: _detailAppBar(),
       body: Column(
         children: [
-          Slider(
-            value: sl,
-            onChanged: (value) {},
-            min: 0.0,
-            max: 100.0,
+          SizedBox(
+            child: SliderTheme(
+              child: Slider(
+                value: sl,
+                onChanged: (value) {},
+                min: 0.0,
+                max: 100.0,
+              ),
+              data: SliderTheme.of(context).copyWith(
+                  trackHeight: 5,
+                  activeTrackColor: Colors.indigoAccent,
+                  thumbShape: RoundSliderThumbShape(enabledThumbRadius: 0.0)),
+            ),
+          ),
+          Text(
+            'Kyrgyzstan',
+            style: AppTextStyle.capitalNameStyle,
           )
         ],
       ),
