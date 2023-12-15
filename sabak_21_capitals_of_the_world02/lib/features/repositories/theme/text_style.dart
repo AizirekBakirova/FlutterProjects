@@ -7,4 +7,20 @@ class AppTextStyle {
       fontSize: 14,
       fontWeight: FontWeight.w700,
       fontFamily: 'Urbanist');
+
+  static const numberFalseStyle = TextStyle(
+      color: AppColors.red,
+      fontWeight: FontWeight.bold,
+      fontFamily: 'Urbanist');
+
+  static const numberTrueStyle = TextStyle(
+      color: AppColors.green,
+      fontWeight: FontWeight.bold,
+      fontFamily: 'Urbanist');
+
+  static const capitalNameStyle = TextStyle(
+      color: AppColors.black,
+      fontWeight: FontWeight.bold,
+      fontSize: 24,
+      fontFamily: 'Urbanist');
 }

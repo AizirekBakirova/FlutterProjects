@@ -29,7 +29,12 @@ class DetailPage extends StatelessWidget {
           Text(
             'Kyrgyzstan',
             style: AppTextStyle.capitalNameStyle,
-          )
+          ),
+          Image.asset(image),
+          ChooseCity(),
+          ChooseCity(),
+          ChooseCity(),
+          ChooseCity(),
         ],
       ),
     );
@@ -49,6 +54,28 @@ class DetailPage extends StatelessWidget {
         ],
       ),
       actions: [const Icon(Icons.more_vert)],
+    );
+  }
+}
+
+class ChooseCity extends StatelessWidget {
+  const ChooseCity({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      clipBehavior: Clip.hardEdge,
+      child: InkWell(
+        splashColor: Colors.blue.withAlpha(30),
+        onTap: () {},
+        child: const SizedBox(
+          width: double.infinity,
+          height: 50,
+          child: Center(child: Text('Bishkek')),
+        ),
+      ),
     );
   }
 }
