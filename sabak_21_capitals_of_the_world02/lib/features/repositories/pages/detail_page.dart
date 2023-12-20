@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sabak_20_capitals_of_the_world1/features/repositories/theme/size.dart';
 import 'package:sabak_20_capitals_of_the_world1/features/repositories/theme/text_style.dart';
 
 class DetailPage extends StatelessWidget {
@@ -30,11 +31,23 @@ class DetailPage extends StatelessWidget {
             'Kyrgyzstan',
             style: AppTextStyle.capitalNameStyle,
           ),
-          Image.asset(image),
-          ChooseCity(),
-          ChooseCity(),
-          ChooseCity(),
-          ChooseCity(),
+          Expanded(child: (Image.asset(image))),
+          AppSize.h20,
+          Expanded(
+            flex: 1,
+            child: GridView.count(
+              childAspectRatio: (1 / .6),
+              physics: NeverScrollableScrollPhysics(),
+              crossAxisCount: 2,
+              children: List.generate(
+                  4,
+                  (index) => Card(
+                        color: Colors.grey[300],
+                        margin: EdgeInsets.all(10),
+                        child: Center(child: Text('index')),
+                      )),
+            ),
+          )
         ],
       ),
     );
