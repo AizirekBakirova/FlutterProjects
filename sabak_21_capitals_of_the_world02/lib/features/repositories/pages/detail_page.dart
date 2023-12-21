@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sabak_20_capitals_of_the_world1/features/domain/model/continents.dart';
 import 'package:sabak_20_capitals_of_the_world1/features/repositories/theme/size.dart';
 import 'package:sabak_20_capitals_of_the_world1/features/repositories/theme/text_style.dart';
 
@@ -28,10 +29,10 @@ class DetailPage extends StatelessWidget {
             ),
           ),
           Text(
-            'Kyrgyzstan',
+            continentsList[1].asiaContinentTest!.surooText,
             style: AppTextStyle.capitalNameStyle,
           ),
-          Expanded(child: (Image.asset(image))),
+          Expanded(child: (Image.asset('assets/continents/astana.jpg'))),
           AppSize.h20,
           Expanded(
             flex: 1,
