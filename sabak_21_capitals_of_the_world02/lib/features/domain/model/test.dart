@@ -7,5 +7,7 @@ class Test {
 
 class Joop {
   final String countriesName;
-  final
+  final bool isTrue;
+
+  Joop({required this.countriesName, required this.isTrue});
 }
