@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:sabak_20_capitals_of_the_world1/features/domain/model/continents.dart';
 import 'package:sabak_20_capitals_of_the_world1/features/domain/model/test.dart';
 import 'package:sabak_20_capitals_of_the_world1/features/repositories/theme/size.dart';
 import 'package:sabak_20_capitals_of_the_world1/features/repositories/theme/text_style.dart';
 
-class DetailPage extends StatelessWidget {
-  DetailPage({super.key, required this.image});
-  final String image;
+class DetailPage extends StatefulWidget {
+  const DetailPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<DetailPage> createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
   final double sl = 10;
   int indexs = 0;
   int kataJoop = 0;
@@ -21,10 +27,10 @@ class DetailPage extends StatelessWidget {
           SizedBox(
             child: SliderTheme(
               child: Slider(
-                value: sl,
+                value: indexs.toDouble(),
                 onChanged: (value) {},
                 min: 0.0,
-                max: 100.0,
+                max: 5,
               ),
               data: SliderTheme.of(context).copyWith(
                   trackHeight: 5,
@@ -46,13 +52,58 @@ class DetailPage extends StatelessWidget {
               crossAxisCount: 2,
               children: List.generate(
                   4,
-                  (index) => Card(
-                        color: Colors.grey[300],
-                        margin: EdgeInsets.all(10),
-                        child: Center(
-                            child: Text(capitalsList[indexs]
-                                .joop[index]
-                                .countriesName)),
+                  (index) => InkWell(
+                        onTap: () {
+                          if (indexs + 1 == capitalsList.length) {
+                            showDialog<void>(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text('Сиздин жыйнтыгыныз'),
+                                  content: Text(
+                                    'Туура жооптор: ${tuuraJoop}, Ката жооптор: ${kataJoop}',
+                                  ),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        textStyle: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge,
+                                      ),
+                                      child: const Text('Чыгуу'),
+                                      onPressed: () {
+                                        kataJoop = 0;
+                                        tuuraJoop = 0;
+                                        indexs = 0;
+                                        setState(() {});
+
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          } else {
+                            if (capitalsList[indexs].joop[index].isTrue ==
+                                true) {
+                              tuuraJoop++;
+                            } else {
+                              kataJoop++;
+                            }
+
+                            indexs++;
+                            setState(() {});
+                          }
+                        },
+                        child: Card(
+                          color: Colors.grey[300],
+                          margin: EdgeInsets.all(10),
+                          child: Center(
+                              child: Text(capitalsList[indexs]
+                                  .joop[index]
+                                  .countriesName)),
+                        ),
                       )),
             ),
           )

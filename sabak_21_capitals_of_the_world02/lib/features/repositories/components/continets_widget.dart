@@ -25,9 +25,7 @@ class ContinentsWidget extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: ((context) => DetailPage(
-                            image: continentsList[index].continetImage,
-                          )),
+                      builder: ((context) => DetailPage()),
                     ));
               } else {
                 final snackBar = SnackBar(
