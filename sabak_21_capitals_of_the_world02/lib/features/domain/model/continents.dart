@@ -1,30 +1,22 @@
+import 'package:sabak_20_capitals_of_the_world1/features/domain/model/test.dart';
+
 class Continents {
   Continents(
-      {this.asiaContinentTest,
-      required this.continentName,
-      required this.continetImage});
+      {required this.continentName, required this.continetImage, this.test});
   final String continentName;
-
   final String continetImage;
-  AsiaContinentTest? asiaContinentTest;
-}
-
-class AsiaContinentTest {
-  final String surooText;
-  final String image;
-
-  AsiaContinentTest({required this.surooText, required this.image});
+  final List<Test>? test;
 }
 
 //object
 Continents europe = Continents(
-    continentName: 'Europe', continetImage: 'assets/continents/europe.png');
+  continentName: 'Europe',
+  continetImage: 'assets/continents/europe.png',
+);
 Continents asia = Continents(
     continentName: 'Asia',
     continetImage: 'assets/continents/asia.webp',
-    asiaContinentTest: AsiaContinentTest(
-        surooText: 'Astana', image: 'assets/capitals/astana.jpg'));
-
+    test: capitalsList);
 Continents nAmerica = Continents(
     continentName: 'North America',
     continetImage: 'assets/continents/namerica.png');

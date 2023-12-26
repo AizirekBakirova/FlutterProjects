@@ -21,13 +21,15 @@ class ContinentsWidget extends StatelessWidget {
           padding: EdgeInsets.all(8.0),
           child: GestureDetector(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: ((context) => DetailPage(
-                          image: continentsList[index].continetImage,
-                        )),
-                  ));
+              if (continentsList[index].test != null) {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: ((context) => DetailPage(
+                            image: continentsList[index].continetImage,
+                          )),
+                    ));
+              }
             },
             child: Container(
               height: 175,
