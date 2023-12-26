@@ -29,6 +29,14 @@ class ContinentsWidget extends StatelessWidget {
                             image: continentsList[index].continetImage,
                           )),
                     ));
+              } else {
+                final snackBar = SnackBar(
+                    content: Text(
+                      'Сиз тандаган ${continentsList[index].continentName} континенти бош',
+                      style: TextStyle(fontFamily: 'Urbanist'),
+                    ),
+                    action: SnackBarAction(label: '', onPressed: () {}));
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
               }
             },
             child: Container(

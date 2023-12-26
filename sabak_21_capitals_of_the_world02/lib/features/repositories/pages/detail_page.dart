@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:sabak_20_capitals_of_the_world1/features/domain/model/continents.dart';
+import 'package:sabak_20_capitals_of_the_world1/features/domain/model/test.dart';
 import 'package:sabak_20_capitals_of_the_world1/features/repositories/theme/size.dart';
 import 'package:sabak_20_capitals_of_the_world1/features/repositories/theme/text_style.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({super.key, required this.image});
+  DetailPage({super.key, required this.image});
   final String image;
   final double sl = 10;
+  int indexs = 0;
+  int kataJoop = 0;
+  int tuuraJoop = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _detailAppBar(),
+      appBar: _detailAppBar(kata: kataJoop, tuura: tuuraJoop),
       body: Column(
         children: [
           SizedBox(
@@ -29,10 +33,10 @@ class DetailPage extends StatelessWidget {
             ),
           ),
           Text(
-            continentsList[1].asiaContinentTest!.surooText,
+            capitalsList[indexs].capitalName,
             style: AppTextStyle.capitalNameStyle,
           ),
-          Expanded(child: (Image.asset('assets/continents/astana.jpg'))),
+          Expanded(child: (Image.asset(capitalsList[indexs].capitalImage))),
           AppSize.h20,
           Expanded(
             flex: 1,
@@ -45,7 +49,10 @@ class DetailPage extends StatelessWidget {
                   (index) => Card(
                         color: Colors.grey[300],
                         margin: EdgeInsets.all(10),
-                        child: Center(child: Text('index')),
+                        child: Center(
+                            child: Text(capitalsList[indexs]
+                                .joop[index]
+                                .countriesName)),
                       )),
             ),
           )
@@ -54,15 +61,15 @@ class DetailPage extends StatelessWidget {
     );
   }
 
-  AppBar _detailAppBar() {
+  AppBar _detailAppBar({required int kata, required int tuura}) {
     return AppBar(
-      title: const Row(
+      title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('22', style: AppTextStyle.numberFalseStyle),
+          Text(kata.toString(), style: AppTextStyle.numberFalseStyle),
           Text('|'),
           Text(
-            '10',
+            tuura.toString(),
             style: AppTextStyle.numberTrueStyle,
           )
         ],

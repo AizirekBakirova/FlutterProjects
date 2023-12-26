@@ -48,7 +48,7 @@ Test baku = Test(
 
 Test singapore = Test(
     capitalName: 'Singapore',
-    capitalImage: 'assets/continents/sigapore.jpg',
+    capitalImage: 'assets/continents/singapore.jpg',
     joop: [
       Joop(countriesName: 'Japan', isTrue: false),
       Joop(countriesName: 'South Korea', isTrue: false),
