@@ -9,16 +9,15 @@ class TempWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Row(
+      child: Column(
         children: [
           const Text(
-            '8',
-            style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
+            '9°',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 60,
+            ),
           ),
-          Image.asset(
-            'assets/cloud.png',
-            width: 100,
-          )
         ],
       ),
     );
