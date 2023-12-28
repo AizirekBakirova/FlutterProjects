@@ -14,11 +14,13 @@ class NearMeLocation extends StatelessWidget {
         children: [
           Icon(
             Icons.near_me,
-            size: 35,
+            size: 25,
+            color: Colors.white,
           ),
           Icon(
             Icons.location_city,
-            size: 35,
+            size: 25,
+            color: Colors.white,
           )
         ],
       ),

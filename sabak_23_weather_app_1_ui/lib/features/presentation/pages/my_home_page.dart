@@ -31,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             TempWidget(),
             CityName(),
-            SizedBox(height: 300),
+            SizedBox(height: 310),
             Padding(
               padding: EdgeInsets.only(left: 20, right: 20),
               child: Row(
