@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:sabak_20_capitals_of_the_world1/features/domain/model/test.dart';
+
+import 'package:sabak_20_capitals_of_the_world1/features/domain/model/test_europe.dart';
 import 'package:sabak_20_capitals_of_the_world1/features/repositories/theme/size.dart';
 import 'package:sabak_20_capitals_of_the_world1/features/repositories/theme/text_style.dart';
 
-class DetailPage extends StatefulWidget {
-  const DetailPage({
+class DetailPage2 extends StatefulWidget {
+  const DetailPage2({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<DetailPage> createState() => _DetailPageState();
+  State<DetailPage2> createState() => _DetailPageState();
 }
 
-class _DetailPageState extends State<DetailPage> {
+class _DetailPageState extends State<DetailPage2> {
   final double sl = 10;
   int indexs = 0;
   int kataJoop = 0;
@@ -39,10 +40,10 @@ class _DetailPageState extends State<DetailPage> {
             ),
           ),
           Text(
-            capitalsList[indexs].capitalName,
+            capitalsList[indexs].flagName,
             style: AppTextStyle.capitalNameStyle,
           ),
-          Expanded(child: (Image.asset(capitalsList[indexs].capitalImage))),
+          Expanded(child: (Image.asset(capitalsList[indexs].flagImage))),
           AppSize.h20,
           Expanded(
             flex: 1,
@@ -59,14 +60,23 @@ class _DetailPageState extends State<DetailPage> {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  backgroundColor: Colors.white,
+                                  backgroundColor:
+                                      Color.fromARGB(255, 38, 36, 38),
                                   title: Text(
-                                    'Сиздин жыйнтыгыныз:',
-                                    style: TextStyle(color: Colors.black),
+                                    'Result:',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'Urbanist',
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.w700),
                                   ),
                                   content: Text(
-                                    'Туура жооптор: ${tuuraJoop} \nКата жооптор: ${kataJoop}',
-                                    style: TextStyle(color: Colors.black),
+                                    'Correct answers: ${tuuraJoop} \nIncorrect answers: ${kataJoop}',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'Urbanist',
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                   actions: <Widget>[
                                     TextButton(
@@ -78,8 +88,12 @@ class _DetailPageState extends State<DetailPage> {
                                               horizontal: 50),
                                           backgroundColor: Colors.green),
                                       child: const Text(
-                                        'Чыгуу',
-                                        style: TextStyle(color: Colors.white),
+                                        'Restart',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: 'Urbanist',
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500),
                                       ),
                                       onPressed: () {
                                         kataJoop = 0;

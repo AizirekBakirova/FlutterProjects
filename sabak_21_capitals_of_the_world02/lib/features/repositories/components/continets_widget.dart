@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sabak_20_capitals_of_the_world1/features/domain/model/continents.dart';
 import 'package:sabak_20_capitals_of_the_world1/features/repositories/pages/detail_page.dart';
+import 'package:sabak_20_capitals_of_the_world1/features/repositories/pages/detail_page2.dart';
 
 import 'package:sabak_20_capitals_of_the_world1/features/repositories/theme/text_style.dart';
 
@@ -22,11 +23,11 @@ class ContinentsWidget extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               if (continentsList[index].test != null) {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: ((context) => DetailPage()),
-                    ));
+                Navigator.push(context, MaterialPageRoute(
+                  builder: ((context) {
+                    return DetailPage2();
+                  }),
+                ));
               } else {
                 final snackBar = SnackBar(
                     content: Text(

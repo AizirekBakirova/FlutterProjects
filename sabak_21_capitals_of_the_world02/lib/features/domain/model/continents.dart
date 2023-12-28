@@ -10,9 +10,9 @@ class Continents {
 
 //object
 Continents europe = Continents(
-  continentName: 'Europe',
-  continetImage: 'assets/continents/europe.png',
-);
+    continentName: 'Europe',
+    continetImage: 'assets/continents/europe.png',
+    test: capitalsList);
 Continents asia = Continents(
     continentName: 'Asia',
     continetImage: 'assets/continents/asia.webp',
