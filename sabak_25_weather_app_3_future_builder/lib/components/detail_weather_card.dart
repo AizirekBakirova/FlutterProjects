@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class DetailWeatherCard extends StatelessWidget {
   const DetailWeatherCard({
     super.key,
+    required this.windSpeed,
   });
+  final String windSpeed;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,9 @@ class DetailWeatherCard extends StatelessWidget {
                 color: Colors.white,
               ),
               Text(
-                '8°',
+                windSpeed
+                // '8°'
+                ,
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
             ],
