@@ -163,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     NearMeLocation(
-                      locationPressed: () {
+                      locationPressed: () async {
                         weatherlocation();
                       },
                       cityNamePressed: () {
