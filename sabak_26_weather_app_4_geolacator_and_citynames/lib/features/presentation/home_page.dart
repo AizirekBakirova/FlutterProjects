@@ -17,6 +17,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<String> cities = [
+    'Bishkek',
+    'Osh',
+    'Karakol',
+    'Talas',
+    'Batken',
+    'Naryn',
+    'Tokmok',
+    'Jalalabad'
+  ];
   Future<Weather?> fetchData() async {
     final dio = Dio();
     final result = await dio.get(
@@ -33,6 +43,37 @@ class _HomePageState extends State<HomePage> {
     } else {
       return null;
     }
+  }
+
+  void bottomSheet() {
+    showModalBottomSheet(
+        context: context,
+        builder: ((context) {
+          return ListView.builder(
+            itemCount: cities.length,
+            itemBuilder: (context, index) {
+              final city = cities[index];
+              return ListTile(
+                title: InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Card(
+                      color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: Text(
+                            city,
+                            style: TextStyle(fontSize: 25),
+                          ),
+                        ),
+                      )),
+                ),
+              );
+            },
+          );
+        }));
   }
 
   @override
@@ -69,7 +110,11 @@ class _HomePageState extends State<HomePage> {
                     )),
                     child: Column(
                       children: [
-                        NearMeLocation(),
+                        NearMeLocation(
+                          onPressed: () {
+                            bottomSheet();
+                          },
+                        ),
                         SizedBox(
                           height: 80,
                         ),
