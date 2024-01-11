@@ -24,7 +24,8 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.sabak_26_weather_app_4_geolacator_and_citynames"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 33
+    // flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
