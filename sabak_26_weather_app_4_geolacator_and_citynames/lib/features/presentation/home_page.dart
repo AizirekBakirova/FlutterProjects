@@ -9,6 +9,7 @@ import 'package:sabak_26_weather_app_4_geolacator_and_citynames/components/near_
 import 'package:sabak_26_weather_app_4_geolacator_and_citynames/components/temp_widget.dart';
 import 'package:sabak_26_weather_app_4_geolacator_and_citynames/components/week_days_widget.dart';
 import 'package:sabak_26_weather_app_4_geolacator_and_citynames/constants/api_const.dart';
+import 'package:sabak_26_weather_app_4_geolacator_and_citynames/constants/constants.dart';
 import 'package:sabak_26_weather_app_4_geolacator_and_citynames/features/data/weather_model.dart';
 
 class HomePage extends StatefulWidget {
@@ -112,6 +113,7 @@ class _HomePageState extends State<HomePage> {
 
   void bottomSheet() {
     showModalBottomSheet(
+        backgroundColor: Colors.white,
         context: context,
         builder: ((context) {
           return ListView.builder(
@@ -128,13 +130,13 @@ class _HomePageState extends State<HomePage> {
                     Navigator.pop(context);
                   },
                   child: Card(
-                      color: Colors.white,
+                      color: Color(0xff90B2F8).withOpacity(.6),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Center(
                           child: Text(
                             city,
-                            style: TextStyle(fontSize: 25),
+                            style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                         ),
                       )),
@@ -180,11 +182,7 @@ class _HomePageState extends State<HomePage> {
                       cityName: weather!.name,
                     ),
                     SizedBox(height: 310),
-                    WeekDaysWidget(
-                      dayText: 'Monday',
-                      icon:
-                          'https://openweathermap.org/img/wn/${weather!.icon}@4x.png',
-                    ),
+                    WeekDaysWidget(),
                     Divider(
                       indent: 20,
                       endIndent: 20,
@@ -192,16 +190,39 @@ class _HomePageState extends State<HomePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        // DetailWeatherCard(
-                        //     windSpeed: '${(weather!.speed!).toInt()}'),
-                        // DetailWeatherCard(
-                        //     windSpeed: '${(weather!.speed!).toInt()}'),
-                        // DetailWeatherCard(
-                        //     windSpeed: '${(weather!.speed!).toInt()}'),
-                        // DetailWeatherCard(
-                        //     windSpeed: '${(weather!.speed!).toInt()}'),
-                        // DetailWeatherCard(
-                        //     windSpeed: '${(weather!.speed!).toInt()}'),
+                        DetailWeatherCard(
+                          timetext1: '15.01',
+
+                          temptext2:
+                              '${(weather!.temp - 273.15).floorToDouble()}°',
+                          // tempimage: 'assets/7 (1).png',
+
+                          // windSpeed: '${(weather!.speed!).toInt()}'
+                        ),
+                        DetailWeatherCard(
+                          timetext1: '16.01', temptext2: '-3°',
+                          // tempimage: 'assets/7 (1).png',
+
+                          // windSpeed: '${(weather!.speed!).toInt()}'
+                        ),
+                        DetailWeatherCard(
+                          timetext1: '17.01', temptext2: '0°',
+                          // tempimage: 'assets/7 (1).png',
+
+                          // windSpeed: '${(weather!.speed!).toInt()}'
+                        ),
+                        DetailWeatherCard(
+                          timetext1: '18.01', temptext2: '-1°',
+                          // tempimage: 'assets/7 (1).png',
+
+                          // windSpeed: '${(weather!.speed!).toInt()}'
+                        ),
+                        DetailWeatherCard(
+                          timetext1: '19.01', temptext2: '2°',
+                          // tempimage: 'assets/7 (1).png',
+
+                          // windSpeed: '${(weather!.speed!).toInt()}'
+                        ),
                       ],
                     )
                   ],

@@ -3,45 +3,24 @@ import 'package:flutter/material.dart';
 class WeekDaysWidget extends StatelessWidget {
   const WeekDaysWidget({
     super.key,
-    required this.dayText,
-    required this.icon,
   });
-  final String dayText;
-  final String icon;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return const Padding(
       padding: EdgeInsets.only(left: 20, right: 20),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            dayText,
-            style: TextStyle(color: Colors.white, fontSize: 20),
+            'Today',
+            style: TextStyle(fontSize: 20, color: Colors.white),
           ),
-          Icon(
-            Icons.arrow_drop_down,
-            color: Colors.white,
+          Text(
+            'Next 5 Days',
+            style: TextStyle(fontSize: 18, color: Colors.white),
           ),
-          SizedBox(width: 180),
-          Icon(
-            Icons.thermostat,
-            color: Colors.white,
-          ),
-          SizedBox(
-            width: 5,
-          ),
-          Icon(
-            Icons.sunny,
-            color: Colors.white,
-          ),
-          SizedBox(
-            width: 5,
-          ),
-          Icon(
-            Icons.cloud,
-            color: Colors.white,
-          )
         ],
       ),
     );
