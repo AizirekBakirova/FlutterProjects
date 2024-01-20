@@ -46,16 +46,16 @@ class _NewsPageState extends State<NewsPage> {
                           children: [
                             Row(
                               children: [
-                                Text(
-                                  titleList[index].numbers,
-                                  style: TextStyle(
-                                      color: AppColors.deepPurple,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
+                                // Text(
+                                //   titleList[index].numbers,
+                                //   style: TextStyle(
+                                //       color: AppColors.deepPurple,
+                                //       fontWeight: FontWeight.bold,
+                                //       fontSize: 15),
+                                // ),
+                                // SizedBox(
+                                //   width: 10,
+                                // ),
                                 Text(
                                   titleList[index].titleText,
                                   style: TextStyle(
