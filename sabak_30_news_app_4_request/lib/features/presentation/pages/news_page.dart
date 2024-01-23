@@ -1,14 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:sabak_29_news_app_3_request/constants/app_colors.dart';
-import 'package:sabak_29_news_app_3_request/constants/app_text_style.dart';
-import 'package:sabak_29_news_app_3_request/features/data/fetch_data/fetch_top_news.dart';
-import 'package:sabak_29_news_app_3_request/features/data/models/top_news.dart';
-import 'package:sabak_29_news_app_3_request/features/data/title_models.dart';
-import 'package:sabak_29_news_app_3_request/features/presentation/pages/detail_page.dart';
-
-import '../../data/news_model.dart';
+import 'package:sabak_30_news_app_4_request/constants/app_colors.dart';
+import 'package:sabak_30_news_app_4_request/constants/app_text_style.dart';
+import 'package:sabak_30_news_app_4_request/features/data/fetch_data/fetch_top_news.dart';
+import 'package:sabak_30_news_app_4_request/features/data/models/country_model.dart';
+import 'package:sabak_30_news_app_4_request/features/data/models/flag_models.dart';
+import 'package:sabak_30_news_app_4_request/features/data/models/top_news.dart';
+import 'package:sabak_30_news_app_4_request/features/presentation/pages/detail_page.dart';
+import 'package:country_flags/country_flags.dart';
 
 class NewsPage extends StatefulWidget {
   const NewsPage({super.key});
@@ -19,8 +19,10 @@ class NewsPage extends StatefulWidget {
 
 class _NewsPageState extends State<NewsPage> {
   TopNews? topnews;
-  Future<void> fetchTopNews() async {
-    topnews = await FetchTopNews().fetchTopNews();
+  Future<void> fetchTopNews([String? domain]) async {
+    topnews = null;
+    setState(() {});
+    topnews = await FetchTopNews().fetchTopNews(domain);
     setState(() {});
   }
 
@@ -47,12 +49,41 @@ class _NewsPageState extends State<NewsPage> {
             ],
           ),
           actions: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.more_vert,
-                  color: AppColors.deepPurple,
-                ))
+            PopupMenuButton<Countries>(
+              onSelected: (Countries country) async {
+                await fetchTopNews(country.domain);
+              },
+              itemBuilder: (context) => countriesSet
+                  .map(
+                    (e) => PopupMenuItem<Countries>(
+                        value: e,
+                        child: Row(
+                          children: [
+                            Column(
+                              children: [
+                                Image.asset(
+                                  'assets/tr.png',
+                                  height: 20,
+                                  width: 20,
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              e.name,
+                              style: const TextStyle(
+                                  fontSize: 20, color: Colors.white),
+                            ),
+                          ],
+                        )),
+                  )
+                  .toList(),
+              offset: const Offset(0, 100),
+              color: AppColors.deepPurple,
+              elevation: 2,
+            )
           ],
         ),
         body: topnews == null
@@ -157,7 +188,7 @@ class _NewsPageState extends State<NewsPage> {
                             ),
                           ),
                           //image container
-                          Container(
+                          SizedBox(
                             width: 130,
                             height: 130,
                             child: ClipRRect(
