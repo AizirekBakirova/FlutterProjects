@@ -107,7 +107,7 @@ class _NewsPageState extends State<NewsPage> {
                                   description: news.description ?? 'Empty Text',
                                   publishedAt: news.publishedAt,
                                   author: news.author ?? 'Empty',
-                                  content: news.content ?? 'Empty',
+                                  article: news,
                                 ))),
                     child: Container(
                       margin: const EdgeInsets.only(

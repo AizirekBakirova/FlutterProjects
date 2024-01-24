@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sabak_30_news_app_4_request/features/data/models/top_news.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:share_plus/share_plus.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage(
@@ -8,19 +11,28 @@ class DetailPage extends StatelessWidget {
       required this.description,
       required this.publishedAt,
       required this.author,
-      required this.content});
+      required this.article});
   final String urlToImage;
   final String title;
   final String description;
   final DateTime publishedAt;
-  final String content;
   final String author;
-
+  final Article article;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail Page'),
+        actions: article.url.isNotEmpty
+            ? [
+                IconButton(
+                  onPressed: () {
+                    Share.share(article.url);
+                  },
+                  icon: Icon(Icons.share),
+                )
+              ]
+            : null,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8),
@@ -57,6 +69,14 @@ class DetailPage extends StatelessWidget {
             Text(
               author,
               style: const TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                if (!await launchUrl(Uri.parse(article.url))) {
+                  throw Exception('Could not launch');
+                }
+              },
+              child: const Text('Сайтка кирүү'),
             ),
           ],
         ),
