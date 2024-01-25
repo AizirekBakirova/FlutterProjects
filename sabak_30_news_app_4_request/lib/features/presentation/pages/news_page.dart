@@ -9,6 +9,7 @@ import 'package:sabak_30_news_app_4_request/features/data/models/flag_models.dar
 import 'package:sabak_30_news_app_4_request/features/data/models/top_news.dart';
 import 'package:sabak_30_news_app_4_request/features/presentation/pages/detail_page.dart';
 import 'package:country_flags/country_flags.dart';
+import 'package:sabak_30_news_app_4_request/features/presentation/pages/flags_widget.dart';
 
 class NewsPage extends StatefulWidget {
   const NewsPage({super.key});
@@ -56,28 +57,13 @@ class _NewsPageState extends State<NewsPage> {
               itemBuilder: (context) => countriesSet
                   .map(
                     (e) => PopupMenuItem<Countries>(
-                        value: e,
-                        child: Row(
-                          children: [
-                            Column(
-                              children: [
-                                Image.asset(
-                                  'assets/tr.png',
-                                  height: 20,
-                                  width: 20,
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              e.name,
-                              style: const TextStyle(
-                                  fontSize: 20, color: Colors.white),
-                            ),
-                          ],
-                        )),
+                      value: e,
+                      child: Text(
+                        e.name,
+                        style:
+                            const TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                    ),
                   )
                   .toList(),
               offset: const Offset(0, 100),
@@ -135,13 +121,6 @@ class _NewsPageState extends State<NewsPage> {
                                       const SizedBox(
                                         width: 10,
                                       ),
-                                      // Text(
-                                      //   titleList[index].titleText,
-                                      //   style: const TextStyle(
-                                      //       color: AppColors.deepPurple,
-                                      //       fontWeight: FontWeight.bold,
-                                      //       fontSize: 15),
-                                      // )
                                     ],
                                   ),
                                   const SizedBox(
@@ -194,7 +173,8 @@ class _NewsPageState extends State<NewsPage> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: CachedNetworkImage(
-                                imageUrl: '${news.urlToImage}',
+                                imageUrl: news.urlToImage ??
+                                    'https://media.istockphoto.com/id/1311148884/vector/abstract-globe-background.jpg?s=612x612&w=0&k=20&c=9rVQfrUGNtR5Q0ygmuQ9jviVUfrnYHUHcfiwaH5-WFE=',
                                 placeholder: (context, url) =>
                                     const CircularProgressIndicator(),
                                 errorWidget: (context, url, error) =>
@@ -209,38 +189,6 @@ class _NewsPageState extends State<NewsPage> {
                       ),
                     ),
                   );
-
-                  // return Padding(
-                  //   padding: const EdgeInsets.symmetric(vertical: 5),
-                  //   child: Card(
-                  //     color: Colors.white,
-                  //     child: Column(
-                  //       children: [
-                  //         Row(
-                  //           children: [
-                  //             Expanded(
-                  //               child: Padding(
-                  //                 padding: const EdgeInsets.all(8.0),
-                  //                 child: Text(
-                  //                   news.title,
-                  //                   style: AppTextStyle.newsStyle,
-                  //                 ),
-                  //               ),
-                  //             ),
-                  //             SizedBox(
-                  //               width: 190,
-                  //               height: 190,
-                  //               child: Image.network(
-                  //                 news.urlToImage ?? '',
-                  //                 fit: BoxFit.cover,
-                  //               ),
-                  //             ),
-                  //           ],
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // );
                 }),
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColors.deepPurple,

@@ -26,7 +26,7 @@ class _FirstPageState extends State<FirstPage> {
                 child: Image.asset(
                   'assets/lisbon.jfif',
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height / 1.6,
+                  height: MediaQuery.of(context).size.height / 1.7,
                   fit: BoxFit.cover,
                 ),
               ),
