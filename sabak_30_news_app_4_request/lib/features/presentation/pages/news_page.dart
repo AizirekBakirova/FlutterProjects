@@ -9,7 +9,6 @@ import 'package:sabak_30_news_app_4_request/features/data/models/flag_models.dar
 import 'package:sabak_30_news_app_4_request/features/data/models/top_news.dart';
 import 'package:sabak_30_news_app_4_request/features/presentation/pages/detail_page.dart';
 import 'package:country_flags/country_flags.dart';
-import 'package:sabak_30_news_app_4_request/features/presentation/pages/flags_widget.dart';
 
 class NewsPage extends StatefulWidget {
   const NewsPage({super.key});
