@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:sabak_30_news_app_4_request/constants/app_colors.dart';
 import 'package:sabak_30_news_app_4_request/features/data/models/top_news.dart';
-import 'package:sabak_30_news_app_4_request/features/presentation/pages/flags_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -93,7 +92,7 @@ class DetailPage extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.deepPurple),
                 child: const Text(
-                  'More details',
+                  'See more details',
                   style: TextStyle(color: Colors.white),
                 ),
               ),

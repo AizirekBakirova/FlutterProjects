@@ -57,10 +57,21 @@ class _NewsPageState extends State<NewsPage> {
                   .map(
                     (e) => PopupMenuItem<Countries>(
                       value: e,
-                      child: Text(
-                        e.name,
-                        style:
-                            const TextStyle(fontSize: 20, color: Colors.white),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.newspaper,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            e.name,
+                            style: const TextStyle(
+                                fontSize: 20, color: Colors.white),
+                          ),
+                        ],
                       ),
                     ),
                   )
