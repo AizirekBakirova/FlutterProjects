@@ -76,7 +76,7 @@ class DetailPage extends StatelessWidget {
                   throw Exception('Could not launch');
                 }
               },
-              child: const Text('Сайтка кирүү'),
+              child: const Text('Go to site'),
             ),
           ],
         ),
