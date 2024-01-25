@@ -59,11 +59,16 @@ class _NewsPageState extends State<NewsPage> {
                       value: e,
                       child: Row(
                         children: [
-                          Icon(
+                          // CountryFlag.fromCountryCode(
+                          //   'us',
+                          //   height: 20,
+                          //   width: 20,
+                          // ),
+                          const Icon(
                             Icons.newspaper,
                             color: Colors.white,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Text(
