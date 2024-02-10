@@ -5,6 +5,7 @@ import 'package:sabak_34_firebase_todo_1/features/presentation/pages/my_todo_pag
 import 'package:sabak_34_firebase_todo_1/firebase_options.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
@@ -12,7 +13,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
