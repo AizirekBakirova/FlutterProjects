@@ -1,8 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:sabak_34_firebase_todo_1/features/presentation/pages/home_page.dart';
 import 'package:sabak_34_firebase_todo_1/features/presentation/pages/my_todo_page.dart';
+import 'package:sabak_34_firebase_todo_1/firebase_options.dart';
 
-void main() {
+void main() async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
