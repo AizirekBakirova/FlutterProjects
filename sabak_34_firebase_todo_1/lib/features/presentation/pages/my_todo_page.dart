@@ -1,6 +1,9 @@
+import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:sabak_34_firebase_todo_1/features/presentation/pages/home_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MyTodoPage extends StatefulWidget {
   const MyTodoPage({super.key});
@@ -14,6 +17,16 @@ class _MyTodoPageState extends State<MyTodoPage> {
   final nameController = TextEditingController();
   final biographyController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  Future<void> readData() async {
+    final db = FirebaseFirestore.instance;
+    await db.collection('myTodo').get().then((event) {
+      for (var doc in event.docs) {
+        print('${doc.id} => ${doc.data()}');
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
