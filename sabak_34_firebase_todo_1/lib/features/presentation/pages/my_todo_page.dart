@@ -1,9 +1,7 @@
-import 'dart:js_interop';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:sabak_34_firebase_todo_1/features/presentation/pages/home_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:sabak_34_firebase_todo_1/features/data/model.dart';
+import 'package:sabak_34_firebase_todo_1/features/presentation/pages/my_home_page.dart';
 
 class MyTodoPage extends StatefulWidget {
   const MyTodoPage({super.key});
@@ -13,93 +11,94 @@ class MyTodoPage extends StatefulWidget {
 }
 
 class _MyTodoPageState extends State<MyTodoPage> {
-  bool isCompleted = false;
+  bool isComplated = false;
   final nameController = TextEditingController();
   final biographyController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  Future<void> readData() async {
+  Future<void> creadTodo() async {
     final db = FirebaseFirestore.instance;
-    await db.collection('myTodo').get().then((event) {
-      for (var doc in event.docs) {
-        print('${doc.id} => ${doc.data()}');
-      }
-    });
+    final creadTodos = Todo(
+      name: nameController.text,
+      biography: biographyController.text,
+      isCompleted: isComplated,
+    );
+    await db.collection('myTodo').add(creadTodos.toMap());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My ToDo Page'),
+        title: const Text('My Todo Page'),
       ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Form(
             key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextFormField(
-                  controller: nameController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Enter your name';
-                    } else {
-                      return null;
-                    }
-                  },
-                  decoration: const InputDecoration(
-                    filled: true,
-                    border: OutlineInputBorder(),
-                    labelText: 'Name',
-                  ),
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              TextFormField(
+                controller: nameController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Атыңызды жазыңыз';
+                  } else {
+                    return null;
+                  }
+                },
+                decoration: const InputDecoration(
+                  filled: true,
+                  border: OutlineInputBorder(),
+                  labelText: 'Name',
                 ),
-                const SizedBox(
-                  height: 10,
+              ),
+              const SizedBox(height: 10),
+              TextFormField(
+                controller: biographyController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Биографияңызды жазыңыз';
+                  } else {
+                    return null;
+                  }
+                },
+                decoration: const InputDecoration(
+                  filled: true,
+                  border: OutlineInputBorder(),
+                  labelText: 'Biography',
                 ),
-                TextFormField(
-                  controller: biographyController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Enter your biography';
-                    } else {
-                      return null;
-                    }
-                  },
-                  decoration: const InputDecoration(
-                      filled: true,
-                      border: OutlineInputBorder(),
-                      labelText: 'Biography'),
-                  maxLines: 8,
-                ),
-                CheckboxListTile(
-                  title: const Text('Is Completed'),
-                  value: isCompleted,
-                  onChanged: (value) {
-                    setState(() {
-                      isCompleted = value!;
-                    });
-                  },
-                  secondary: const Icon(Icons.hourglass_empty),
-                ),
-                ElevatedButton.icon(
+                maxLines: 8,
+              ),
+              CheckboxListTile(
+                title: const Text('Is Completed'),
+                value: isComplated,
+                onChanged: (value) {
+                  setState(() {
+                    isComplated = value ?? false;
+                  });
+                },
+                secondary: const Icon(Icons.hourglass_empty),
+              ),
+              ElevatedButton.icon(
                   onPressed: () {
+                    creadTodo();
                     if (_formKey.currentState!.validate()) {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                         return const MyHomePage();
                       }));
                     } else {
-                      null;
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const MyHomePage();
+                      }));
                     }
                   },
                   icon: const Icon(Icons.next_plan),
-                  label: const Text('Автордук бетке отуу'),
-                )
-              ],
-            ),
+                  label: const Text('Автордук бетке өтүү'))
+            ]),
           ),
         ),
       ),

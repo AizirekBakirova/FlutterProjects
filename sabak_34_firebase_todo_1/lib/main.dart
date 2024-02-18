@@ -1,12 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:sabak_34_firebase_todo_1/features/presentation/pages/home_page.dart';
 import 'package:sabak_34_firebase_todo_1/features/presentation/pages/my_todo_page.dart';
-import 'package:sabak_34_firebase_todo_1/firebase_options.dart';
+
+import 'features/presentation/pages/my_home_page.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
