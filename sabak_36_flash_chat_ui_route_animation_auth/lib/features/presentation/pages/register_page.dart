@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sabak_36_flash_chat_ui_route_animation_auth/components/custom_button.dart';
 import 'package:sabak_36_flash_chat_ui_route_animation_auth/components/custom_text_field.dart';
@@ -14,31 +15,65 @@ class RegsiterPage extends StatefulWidget {
 
 class _RegsiterPageState extends State<RegsiterPage> {
   @override
+  final auth = FirebaseAuth.instance;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
+  void signUp() {
+    if (_formKey.currentState!.validate()) {
+      auth
+          .createUserWithEmailAndPassword(
+              email: _emailController.text, password: _passwordController.text)
+          .whenComplete(
+            () => ScaffoldMessenger.of(context)
+                .showSnackBar(
+                  const SnackBar(
+                    content: Text("Successfully Signed Up"),
+                  ),
+                )
+                .closed
+                .whenComplete(
+                  () => Navigator.pushNamed(context, ChatPage.id),
+                ),
+          );
+    }
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Register Page'),
       ),
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              LogoImage(
-                logoSize: 200,
-              ),
-              CustomTextField(
-                text: 'Enter your email',
-              ),
-              CustomTextField(text: 'Enter your password'),
-              CustomButton(
-                  color: Colors.indigoAccent,
-                  text: 'Register',
-                  onPressed: () {
-                    Navigator.pushNamed(context, ChatPage.id);
-                  })
-            ],
+      body: Form(
+        key: _formKey,
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const LogoImage(
+                  logoSize: 200,
+                ),
+                CustomTextField(
+                  controller: _emailController,
+                  text: 'Enter your email',
+                  onChanged: (value) {},
+                ),
+                CustomTextField(
+                  controller: _passwordController,
+                  text: 'Enter your password',
+                  onChanged: (value) {},
+                ),
+                CustomButton(
+                    color: Colors.indigoAccent,
+                    text: 'Register',
+                    onPressed: () {
+                      signUp();
+                    })
+              ],
+            ),
           ),
         ),
       ),
