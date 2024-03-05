@@ -57,21 +57,35 @@ class _RegisterPageState extends State<RegisterPage> {
                 const LogoImage(logoSize: 200),
                 CustomTextField(
                   controller: _emailController,
-                  text: 'Электрондук почтаңыз',
+                  text: 'Enter your email',
                   onChanged: (maani) {},
                 ),
                 CustomTextField(
                   controller: _passwordController,
-                  text: 'Сыр сөз',
+                  text: 'Enter your password',
+                  onChanged: (maani) {},
+                ),
+                CustomTextField(
+                  controller: _passwordController,
+                  text: 'Confirm password',
                   onChanged: (maani) {},
                 ),
                 CustomButton(
                   color: Colors.lightBlueAccent,
-                  text: 'Кирүү',
+                  text: 'Register',
                   onPressed: () {
                     signUp();
                   },
                 ),
+                const Row(
+                  children: [
+                    Text('Do you have an account?'),
+                    Text(
+                      ' Go to sign in',
+                      style: TextStyle(color: Colors.grey),
+                    )
+                  ],
+                )
               ],
             ),
           ),

@@ -30,19 +30,29 @@ class _LoginPageState extends State<LoginPage> {
                 logoSize: 200,
               ),
               CustomTextField(
-                text: 'Enter your Name',
+                text: 'Enter your email',
                 onChanged: (value) {},
               ),
               CustomTextField(
-                text: 'Enter your Last Name',
+                text: 'Enter your password',
                 onChanged: (value) {},
               ),
               CustomButton(
                   color: Colors.indigoAccent,
-                  text: 'Enter',
+                  text: 'Login',
                   onPressed: () {
                     Navigator.pushNamed(context, ChatPage.id);
-                  })
+                  }),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Did not have an account yet?'),
+                  Text(
+                    ' Register.',
+                    style: TextStyle(color: Colors.grey),
+                  )
+                ],
+              )
             ],
           ),
         ),
