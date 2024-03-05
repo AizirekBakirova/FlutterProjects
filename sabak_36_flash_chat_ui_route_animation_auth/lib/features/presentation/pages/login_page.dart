@@ -29,9 +29,9 @@ class _LoginPageState extends State<LoginPage> {
                 logoSize: 200,
               ),
               CustomTextField(
-                text: 'Enter your Name',
+                text: 'Enter your Name', onChanged: (value) {  },
               ),
-              CustomTextField(text: 'Enter your Last Name'),
+              CustomTextField(text: 'Enter your Last Name', onChanged: (value) {  },),
               CustomButton(
                   color: Colors.indigoAccent,
                   text: 'Enter',
