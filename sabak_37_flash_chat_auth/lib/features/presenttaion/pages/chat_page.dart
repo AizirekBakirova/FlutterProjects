@@ -58,6 +58,12 @@ class _ChatPageState extends State<ChatPage> {
                               topRight: Radius.circular(20))),
                     ),
                   ],
+                ),
+                Row(
+                  children: [
+                    SizedBox(width: 300, child: TextField()),
+                    IconButton(onPressed: () {}, icon: Icon(Icons.send))
+                  ],
                 )
               ],
             ),

@@ -59,16 +59,13 @@ class _RegisterPageState extends State<RegisterPage> {
                   controller: _emailController,
                   text: 'Enter your email',
                   onChanged: (maani) {},
+                  obscureText: false,
                 ),
                 CustomTextField(
                   controller: _passwordController,
                   text: 'Enter your password',
                   onChanged: (maani) {},
-                ),
-                CustomTextField(
-                  controller: _passwordController,
-                  text: 'Confirm password',
-                  onChanged: (maani) {},
+                  obscureText: true,
                 ),
                 CustomButton(
                   color: Colors.lightBlueAccent,
@@ -78,6 +75,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   },
                 ),
                 const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('Do you have an account?'),
                     Text(

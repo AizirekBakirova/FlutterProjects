@@ -22,20 +22,22 @@ class _LoginPageState extends State<LoginPage> {
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              LogoImage(
+              const LogoImage(
                 logoSize: 200,
               ),
               CustomTextField(
                 text: 'Enter your email',
                 onChanged: (value) {},
+                obscureText: false,
               ),
               CustomTextField(
                 text: 'Enter your password',
                 onChanged: (value) {},
+                obscureText: true,
               ),
               CustomButton(
                   color: Colors.indigoAccent,
@@ -43,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     Navigator.pushNamed(context, ChatPage.id);
                   }),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Did not have an account yet?'),

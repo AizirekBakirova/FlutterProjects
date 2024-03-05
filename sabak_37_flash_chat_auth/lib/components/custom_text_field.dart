@@ -6,15 +6,18 @@ class CustomTextField extends StatelessWidget {
     required this.text,
     required this.onChanged,
     this.controller,
+    required this.obscureText,
   });
   final String text;
   final void Function(String) onChanged;
   final TextEditingController? controller;
+  final bool obscureText;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextField(
+        obscureText: obscureText,
         controller: controller,
         textAlign: TextAlign.center,
         onChanged: onChanged,
