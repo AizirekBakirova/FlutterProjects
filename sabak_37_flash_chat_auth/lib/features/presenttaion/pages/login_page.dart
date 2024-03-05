@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sabak_36_flash_chat_ui_route_animation_auth/components/custom_button.dart';
-import 'package:sabak_36_flash_chat_ui_route_animation_auth/components/custom_text_field.dart';
-import 'package:sabak_36_flash_chat_ui_route_animation_auth/components/logo_image.dart';
-import 'package:sabak_36_flash_chat_ui_route_animation_auth/features/presentation/pages/chat_page.dart';
+
+import 'package:sabak_37_flash_chat_auth/components/custom_button.dart';
+import 'package:sabak_37_flash_chat_auth/components/custom_text_field.dart';
+import 'package:sabak_37_flash_chat_auth/components/logo_image.dart';
+import 'package:sabak_37_flash_chat_auth/features/presenttaion/pages/chat_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -30,8 +31,12 @@ class _LoginPageState extends State<LoginPage> {
               ),
               CustomTextField(
                 text: 'Enter your Name',
+                onChanged: (value) {},
               ),
-              CustomTextField(text: 'Enter your Last Name'),
+              CustomTextField(
+                text: 'Enter your Last Name',
+                onChanged: (value) {},
+              ),
               CustomButton(
                   color: Colors.indigoAccent,
                   text: 'Enter',

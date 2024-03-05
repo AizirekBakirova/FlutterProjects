@@ -1,21 +1,21 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sabak_36_flash_chat_ui_route_animation_auth/components/custom_button.dart';
-import 'package:sabak_36_flash_chat_ui_route_animation_auth/components/custom_text_field.dart';
-import 'package:sabak_36_flash_chat_ui_route_animation_auth/components/logo_image.dart';
-import 'package:sabak_36_flash_chat_ui_route_animation_auth/features/presentation/pages/chat_page.dart';
+import 'package:sabak_37_flash_chat_auth/components/custom_button.dart';
+import 'package:sabak_37_flash_chat_auth/components/custom_text_field.dart';
+import 'package:sabak_37_flash_chat_auth/components/logo_image.dart';
+import 'package:sabak_37_flash_chat_auth/features/presenttaion/pages/chat_page.dart';
 
-class RegsiterPage extends StatefulWidget {
-  const RegsiterPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
   static const String id = 'register_page';
 
   @override
-  State<RegsiterPage> createState() => _RegsiterPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _RegsiterPageState extends State<RegsiterPage> {
-  @override
-  final auth = FirebaseAuth.instance;
+class _RegisterPageState extends State<RegisterPage> {
+  FirebaseAuth auth = FirebaseAuth.instance;
+
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -40,38 +40,38 @@ class _RegsiterPageState extends State<RegsiterPage> {
     }
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Register Page'),
+        title: const Text('RegisterPage'),
       ),
       body: Form(
         key: _formKey,
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const LogoImage(
-                  logoSize: 200,
-                ),
+                const LogoImage(logoSize: 200),
                 CustomTextField(
                   controller: _emailController,
-                  text: 'Enter your email',
-                  onChanged: (value) {},
+                  text: 'Электрондук почтаңыз',
+                  onChanged: (maani) {},
                 ),
                 CustomTextField(
                   controller: _passwordController,
-                  text: 'Enter your password',
-                  onChanged: (value) {},
+                  text: 'Сыр сөз',
+                  onChanged: (maani) {},
                 ),
                 CustomButton(
-                    color: Colors.indigoAccent,
-                    text: 'Register',
-                    onPressed: () {
-                      signUp();
-                    })
+                  color: Colors.lightBlueAccent,
+                  text: 'Кирүү',
+                  onPressed: () {
+                    signUp();
+                  },
+                ),
               ],
             ),
           ),
