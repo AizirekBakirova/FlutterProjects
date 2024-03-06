@@ -84,8 +84,7 @@ class _ChatPageState extends State<ChatPage> {
                       );
                     }
                   }),
-              Spacer(),
-              // СМС ЖӨНӨНҮҮЧҮ ОРУН
+              const Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -93,10 +92,9 @@ class _ChatPageState extends State<ChatPage> {
                     width: 300,
                     child: TextField(
                       controller: _messageController,
-                      decoration: new InputDecoration(
+                      decoration: const InputDecoration(
                           labelText: "Смс жазуу",
-                          labelStyle:
-                              new TextStyle(color: const Color(0xFF424242))),
+                          labelStyle: TextStyle(color: Color(0xFF424242))),
                     ),
                   ),
                   IconButton(
